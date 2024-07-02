@@ -3,21 +3,24 @@
 #include <stdlib.h>
 #include <chrono>
 #include <thread>
-#include "Citire.h"
-#include "Matrice.h"
-#include "Time.h"
-#include "PiesePosibile.h"
 #define TIME 0
 #define MOVE 1
 #define PLAY 2
 #define QUIT 3
-//#define
+#define DEBUG 0
+#define PLAYAREA 14
+#include "Citire.h"
+#include "PiesePosibile.h"
+#include "Matrice.h"
+#include "Time.h"
+#include "PlacePiece.h"
 using namespace std;
 
 int main(){
   INPUT linie;
 
   Init();
+  InitPiese();
   TimeInit();
 
   linie.val=-1;
@@ -35,7 +38,7 @@ int main(){
       break;
 
       case MOVE:
-        cout << "= move\n";
+        cout << "= "<< PlacedPiece({1,1,0,0}) <<"\n";
       break;
 
       case PLAY:
@@ -48,12 +51,44 @@ int main(){
     //cerr << linie.val;
   }
 
+
   for(int i=0;i<MAXSIZE;i++){
+    printf("%c:",i+'a'-1);
     for(int j=0;j<MAXSIZE;j++){
-      printf("%d",matPiese[i][j]);
+      cout << (matPiese[EU][(i*MAXSIZE+j)]);
     }
     printf("\n");
   }
+  printf("--------------\n");
+  for(int i=0;i<MAXSIZE;i++){
+    printf("%c:",i+'a'-1);
+    for(int j=0;j<MAXSIZE;j++){
+      cout << (matPiese[OPPON][(i*MAXSIZE+j)]);
+    }
+    printf("\n");
+  }
+  printf("--------------\n");
+  for(int i=0;i<MAXSIZE;i++){
+    for(int j=0;j<MAXSIZE;j++){
+      cout << (BORDARE[(i*MAXSIZE+j)]);
+    }
+    printf("\n");
+  }
+
+  printf("\n       ");
+  for(int i=0;i<NRPIECE;i++){
+    printf("%3d",i);
+  }
+
+  printf("\nOPSI : ");
+  for(int i=0;i<NRPIECE;i++){
+    printf("%3d",playerPc[i][OPPON]);
+  }
+  printf("\nEU   : ");
+  for(int i=0;i<NRPIECE;i++){
+    printf("%3d",playerPc[i][EU]);
+  }
+
 
   return 0;
 }

@@ -1,14 +1,15 @@
 # depslib dependency file v1.0
-1719836191 source:c:\users\mihai\mihai-cod\tabaranerdvana2024lotinfo\tabaranerdvana2024lotinfottco\ttco\main.cpp
+1719926481 source:c:\users\mihai\mihai-cod\tabaranerdvana2024lotinfo\tabaranerdvana2024lotinfottco\ttco\main.cpp
 	<iostream>
 	<stdio.h>
 	<stdlib.h>
 	<chrono>
 	<thread>
 	"Citire.h"
+	"PiesePosibile.h"
 	"Matrice.h"
 	"Time.h"
-	"PiesePosibile.h"
+	"PlacePiece.h"
 
 1719833524 c:\users\mihai\mihai-cod\tabaranerdvana2024lotinfo\tabaranerdvana2024lotinfottco\ttco\citire.h
 	<iostream>
@@ -17,24 +18,39 @@
 	<string>
 	<assert.h>
 
-1719836177 c:\users\mihai\mihai-cod\tabaranerdvana2024lotinfo\tabaranerdvana2024lotinfottco\ttco\matrice.h
+1719925053 c:\users\mihai\mihai-cod\tabaranerdvana2024lotinfo\tabaranerdvana2024lotinfottco\ttco\matrice.h
+	<iostream>
+	<stdio.h>
+	<stdlib.h>
+	<string>
+	<assert.h>
+	<bitset>
+	<queue>
+
+1719909878 c:\users\mihai\mihai-cod\tabaranerdvana2024lotinfo\tabaranerdvana2024lotinfottco\ttco\time.h
 	<iostream>
 	<stdio.h>
 	<stdlib.h>
 	<string>
 	<assert.h>
 
-1719833799 c:\users\mihai\mihai-cod\tabaranerdvana2024lotinfo\tabaranerdvana2024lotinfottco\ttco\time.h
+1719924968 c:\users\mihai\mihai-cod\tabaranerdvana2024lotinfo\tabaranerdvana2024lotinfottco\ttco\pieseposibile.h
 	<iostream>
 	<stdio.h>
 	<stdlib.h>
 	<string>
 	<assert.h>
+	<bitset>
+	<vector>
+	<string>
+	<queue>
 
-1719836482 c:\users\mihai\mihai-cod\tabaranerdvana2024lotinfo\tabaranerdvana2024lotinfottco\ttco\pieseposibile.h
+1719927052 c:\users\mihai\mihai-cod\tabaranerdvana2024lotinfo\tabaranerdvana2024lotinfottco\ttco\placepiece.h
 	<iostream>
 	<stdio.h>
 	<stdlib.h>
 	<string>
 	<assert.h>
+	<bitset>
+	<queue>
 
