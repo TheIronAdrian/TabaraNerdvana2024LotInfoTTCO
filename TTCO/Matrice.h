@@ -40,7 +40,7 @@ void Init(){
 void Occupy(string text){
   int i,j,miX,maX,miY,maY,n,m,s;
   queue <int> quePozPuse[2];
-  bitset <5*MAXSIZE> val(0);
+  bitset <MAXSIZE*MAXSIZE> val(0);
 
   maX=maY=0;
   miX=miY=100;

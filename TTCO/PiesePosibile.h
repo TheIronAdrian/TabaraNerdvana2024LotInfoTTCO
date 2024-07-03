@@ -17,7 +17,7 @@ using namespace std;
 
 struct PIECE{
   int n,m;
-  bitset <5*MAXSIZE> mat;
+  bitset <MAXSIZE*MAXSIZE> mat;
 };
 
 vector <PIECE> pc[NRPIECE];
@@ -132,13 +132,7 @@ string matInitiala[NRPIECE][MAXSIZE]={
 
 PIECE Normal(string linie[NRPIECE]){
   int n,m,i,j;
-  bitset <5*MAXSIZE> val;
-
-  for(i=0;i<5;i++){
-    for(j=0;j<MAXSIZE;j++){
-      val[(i*MAXSIZE+j)]=0;
-    }
-  }
+  bitset <MAXSIZE*MAXSIZE> val(0);
 
   m=linie[0].size();
   n=0;
@@ -196,7 +190,7 @@ PIECE Left(PIECE val){
 PIECE Rotate(PIECE val){
   int n,m,i,j;
 
-  bitset <5*MAXSIZE> aux;
+  bitset <MAXSIZE*MAXSIZE> aux;
 
   n=val.m;
   m=val.n;

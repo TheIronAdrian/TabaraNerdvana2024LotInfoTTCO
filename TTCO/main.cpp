@@ -7,6 +7,7 @@
 #define MOVE 1
 #define PLAY 2
 #define QUIT 3
+#define INFI 1000000
 #define DEBUG 0
 #define PLAYAREA 14
 #include "Citire.h"
@@ -53,6 +54,7 @@ int main(){
     cout.flush();
     //cerr << linie.val;
   }
+  cout << "= \n\n";
 
   if(DEBUG>1){
     for(int i=0;i<MAXSIZE;i++){
@@ -92,6 +94,8 @@ int main(){
       printf("%3d",playerPc[i][EU]);
     }
   }
+
+  cerr << "\n\n--------FinishGame--------\n\n";
 
   return 0;
 }
