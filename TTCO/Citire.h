@@ -37,7 +37,9 @@ INPUT ReadLine(){
   if(text == "quit"){
     return {3,""};
   }
+
   assert(text == "play" && "Citire Gresita");
+
 
   cin >> text;
   cin >> text;

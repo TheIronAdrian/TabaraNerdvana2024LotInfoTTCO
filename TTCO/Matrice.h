@@ -5,6 +5,7 @@
 #include <string>
 #include <assert.h>
 #include <bitset>
+#include <time.h>
 #include <queue>
 #define MAXSIZE 16
 #define MATRICESIZE MAXSIZE*MAXSIZE
@@ -20,6 +21,7 @@ int playerPc[NRPIECE][2];
 void Init(){
   int i,j;
 
+  srand ( time(NULL) );
   matPiese[0]=0;
   matPiese[1]=0;
 

@@ -28,22 +28,25 @@ int main(){
     linie=ReadLine();
 
     switch (linie.val){
+      case -1:
+        cout << "= \n\n";
+      break ;
       case TIME:
         if(start!=-1){
-          cout << "= " << TimeLeft() << "\n";
+          cout << "= " << TimeLeft() << "\n\n";
         }else{
           TimeStart();
-          cout << "= 0\n";
+          cout << "= 0\n\n";
         }
       break;
 
       case MOVE:
-        cout << "= "<< PlacedPiece({1,1,0,0}) <<"\n";
+        cout << "= "<< PlaceAPiece(FindPiece(0)) <<"\n\n";
       break;
 
       case PLAY:
         Occupy(linie.text);
-        cout << "=\n";
+        cout << "= \n\n";
       break;
     }
 
@@ -51,44 +54,44 @@ int main(){
     //cerr << linie.val;
   }
 
-
-  for(int i=0;i<MAXSIZE;i++){
-    printf("%c:",i+'a'-1);
-    for(int j=0;j<MAXSIZE;j++){
-      cout << (matPiese[EU][(i*MAXSIZE+j)]);
+  if(DEBUG>1){
+    for(int i=0;i<MAXSIZE;i++){
+      printf("%c:",i+'a'-1);
+      for(int j=0;j<MAXSIZE;j++){
+        cout << (matPiese[EU][(i*MAXSIZE+j)]);
+      }
+      printf("\n");
     }
-    printf("\n");
-  }
-  printf("--------------\n");
-  for(int i=0;i<MAXSIZE;i++){
-    printf("%c:",i+'a'-1);
-    for(int j=0;j<MAXSIZE;j++){
-      cout << (matPiese[OPPON][(i*MAXSIZE+j)]);
+    printf("--------------\n");
+    for(int i=0;i<MAXSIZE;i++){
+      printf("%c:",i+'a'-1);
+      for(int j=0;j<MAXSIZE;j++){
+        cout << (matPiese[OPPON][(i*MAXSIZE+j)]);
+      }
+      printf("\n");
     }
-    printf("\n");
-  }
-  printf("--------------\n");
-  for(int i=0;i<MAXSIZE;i++){
-    for(int j=0;j<MAXSIZE;j++){
-      cout << (BORDARE[(i*MAXSIZE+j)]);
+    printf("--------------\n");
+    for(int i=0;i<MAXSIZE;i++){
+      for(int j=0;j<MAXSIZE;j++){
+        cout << (BORDARE[(i*MAXSIZE+j)]);
+      }
+      printf("\n");
     }
-    printf("\n");
-  }
 
-  printf("\n       ");
-  for(int i=0;i<NRPIECE;i++){
-    printf("%3d",i);
-  }
+    printf("\n       ");
+    for(int i=0;i<NRPIECE;i++){
+      printf("%3d",i);
+    }
 
-  printf("\nOPSI : ");
-  for(int i=0;i<NRPIECE;i++){
-    printf("%3d",playerPc[i][OPPON]);
+    printf("\nOPSI : ");
+    for(int i=0;i<NRPIECE;i++){
+      printf("%3d",playerPc[i][OPPON]);
+    }
+    printf("\nEU   : ");
+    for(int i=0;i<NRPIECE;i++){
+      printf("%3d",playerPc[i][EU]);
+    }
   }
-  printf("\nEU   : ");
-  for(int i=0;i<NRPIECE;i++){
-    printf("%3d",playerPc[i][EU]);
-  }
-
 
   return 0;
 }
