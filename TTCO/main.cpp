@@ -34,6 +34,8 @@ int main(){
       break ;
       case TIME:
         if(start!=-1){
+          cerr << "\n--------FinishGame--------\n";
+          cerr << "\n\nFinal Score: " << matPiese[0].count()<< "  " <<matPiese[1].count()<< "  dif  " << EvalFinal(0)/1000 <<" \n";
           cout << "= " << TimeLeft() << "\n\n";
         }else{
           TimeStart();
@@ -54,7 +56,8 @@ int main(){
     cout.flush();
     //cerr << linie.val;
   }
-  cout << "= \n\n";
+
+  cout << "\n= \n\n";
 
   if(DEBUG>1){
     for(int i=0;i<MAXSIZE;i++){
@@ -94,9 +97,6 @@ int main(){
       printf("%3d",playerPc[i][EU]);
     }
   }
-
-  cerr << "--------Rezultat Final >"<< EvalFinal(0)/1000 << "<--------\n";
-  cerr << "--------FinishGame--------\n\n";
 
   return 0;
 }
