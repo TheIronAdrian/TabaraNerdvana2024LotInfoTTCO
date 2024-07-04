@@ -1,0 +1,128 @@
+Created moves: 13730, precomp: 1097242
+B>> set_game Blokus Duo
+B<< =
+W>> set_game Blokus Duo
+Created moves: 30434, precomp: 2475874
+Using 23 MB of 8154 MB
+Setting default parameters for Blokus
+Creating 1 threads
+Created moves: 13730, precomp: 1097242
+W<< =
+================================================
+Game 0
+================================================
+B>> clear_board
+B<< =
+W>> clear_board
+W<< =
+B>> cputime
+B<< = 0
+W>> cputime
+W<< = 0.19
+B>> genmove b
+B<< = e10,f10,f11,g11,g12
+W>> play b e10,f10,f11,g11,g12
+W<< =
+W>> genmove w
+Could not load book /home/mihai/pentobi/pentobi_gtp/book_duo.blksgf
+MaxCnt 90
+Setting default parameters for Blokus Duo
+[0] Maximum count reached
+Val 0.32, ValCnt 91, Vst 90, Sim 90, Chld 62.2%
+Nds 8889, Tm 00:00, Sim/s 979, Len 21.9 dev=3.0 [16...29]
+Dp 2.8 dev=1.1 [1...5]
+Mov 315, Sco 4.2 dev=5.7
+W<< = i4,h5,i5,j5,i6
+B>> play w i4,h5,i5,j5,i6
+B<< =
+B>> genmove b
+B<< = h13,i13,j13,k12,k13
+W>> play b k12,h13,i13,j13,k13
+W<< =
+W>> genmove w
+Could not load book /home/mihai/pentobi/pentobi_gtp/book_duo.blksgf
+MaxCnt 165
+[0] Maximum count reached
+Val 0.55, ValCnt 256, Vst 165, Sim 165, Chld 87.9%
+Nds 15860, Tm 00:00, Sim/s 2197, Len 21.2 dev=3.4 [13...31]
+Dp 3.4 dev=1.1 [1...6]
+Mov 578, Sco -0.9 dev=4.6
+W<< = h7,g8,h8,h9,i9
+B>> play w h7,g8,h8,h9,i9
+B<< =
+B>> genmove b
+B<< = h10,i10,j10,k10,l10
+W>> play b h10,i10,j10,k10,l10
+W<< =
+W>> genmove w
+Could not load book /home/mihai/pentobi/pentobi_gtp/book_duo.blksgf
+MaxCnt 183
+[0] Maximum count reached
+Val 0.73, ValCnt 283, Vst 183, Sim 183, Chld 95.6%
+Nds 14041, Tm 00:00, Sim/s 3967, Len 18.5 dev=3.5 [11...28]
+Dp 3.6 dev=1.4 [1...6]
+Mov 591, Sco -2.4 dev=3.7
+W<< = d8,c9,d9,e9,f9
+B>> play w d8,c9,d9,e9,f9
+B<< =
+B>> genmove b
+B<< = d11,d12,d13,e12,e13
+W>> play b d11,d12,e12,d13,e13
+W<< =
+W>> genmove w
+Could not load book /home/mihai/pentobi/pentobi_gtp/book_duo.blksgf
+MaxCnt 202
+[0] Maximum count reached
+Val 0.83, ValCnt 302, Vst 202, Sim 202, Chld 91.6%
+Nds 10175, Tm 00:00, Sim/s 5258, Len 15.6 dev=3.4 [9...25]
+Dp 3.5 dev=1.4 [1...7]
+Mov 700, Sco -3.3 dev=3.3
+W<< = k6,l6,j7,k7,j8
+B>> play w k6,l6,j7,k7,j8
+B<< =
+B>> genmove b
+B<< = m11,m12,m13,n11,n13
+W>> play b m11,n11,m12,m13,n13
+W<< =
+W>> genmove w
+Could not load book /home/mihai/pentobi/pentobi_gtp/book_duo.blksgf
+MaxCnt 223
+[0] Maximum count reached
+Val 0.94, ValCnt 323, Vst 223, Sim 223, Chld 69.1%
+Nds 12416, Tm 00:00, Sim/s 8277, Len 9.9 dev=3.1 [7...23]
+Dp 3.5 dev=1.5 [1...7]
+Mov 631, Sco -2.9 dev=1.5
+W<< = l8,m8,m9,m10,n10
+B>> play w l8,m8,m9,m10,n10
+B<< =
+B>> genmove b
+B<< = c10
+W>> play b c10
+W<< =
+W>> genmove w
+Could not load book /home/mihai/pentobi/pentobi_gtp/book_duo.blksgf
+MaxCnt 246
+[0] Maximum count reached
+Val 0.98, ValCnt 346, Vst 246, Sim 246, Chld 55.7%
+Nds 11992, Tm 00:00, Sim/s 10058, Len 10.7 dev=3.0 [5...21]
+Dp 3.3 dev=1.3 [1...6]
+Mov 577, Sco -3.2 dev=1.7
+W<< = a10,b10,a11,b11,b12
+B>> play w a10,b10,a11,b11,b12
+B<< =
+B>> genmove b
+B<< = f14,g14
+W>> play b f14,g14
+W<< =
+W>> genmove w
+Could not load book /home/mihai/pentobi/pentobi_gtp/book_duo.blksgf
+MaxCnt 272
+[0] Maximum count reached
+Val 0.98, ValCnt 372, Vst 272, Sim 272, Chld 82.7%
+Nds 10423, Tm 00:00, Sim/s 11712, Len 9.8 dev=2.8 [3...20]
+Dp 3.8 dev=1.4 [1...8]
+Mov 474, Sco -5.6 dev=1.8
+W<< = a13,c13,a14,b14,c14
+B>> play w a13,c13,a14,b14,c14
+B<< =
+B>> genmove b

@@ -42,7 +42,7 @@ int main(){
       break;
 
       case MOVE:
-        cout << "= "<< PlaceAPiece(FindPiece(0)) <<"\n\n";
+        cout << "= "<<PlaceAPiece(FindPiece(0)) <<"\n\n";
       break;
 
       case PLAY:
@@ -60,7 +60,7 @@ int main(){
     for(int i=0;i<MAXSIZE;i++){
       printf("%c:",i+'a'-1);
       for(int j=0;j<MAXSIZE;j++){
-        cout << (matPiese[EU][(i*MAXSIZE+j)]);
+        cerr << (matPiese[EU][(i*MAXSIZE+j)]);
       }
       printf("\n");
     }
@@ -68,14 +68,14 @@ int main(){
     for(int i=0;i<MAXSIZE;i++){
       printf("%c:",i+'a'-1);
       for(int j=0;j<MAXSIZE;j++){
-        cout << (matPiese[OPPON][(i*MAXSIZE+j)]);
+        cerr << (matPiese[OPPON][(i*MAXSIZE+j)]);
       }
       printf("\n");
     }
     printf("--------------\n");
     for(int i=0;i<MAXSIZE;i++){
       for(int j=0;j<MAXSIZE;j++){
-        cout << (BORDARE[(i*MAXSIZE+j)]);
+        cerr << (BORDARE[(i*MAXSIZE+j)]);
       }
       printf("\n");
     }

@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1720010400 source:c:\users\mihai\mihai-cod\tabaranerdvana2024lotinfo\tabaranerdvana2024lotinfottco\ttco\main.cpp
+1720078995 source:c:\users\mihai\mihai-cod\tabaranerdvana2024lotinfo\tabaranerdvana2024lotinfottco\ttco\main.cpp
 	<iostream>
 	<stdio.h>
 	<stdlib.h>
@@ -35,7 +35,7 @@
 	<string>
 	<assert.h>
 
-1719999417 c:\users\mihai\mihai-cod\tabaranerdvana2024lotinfo\tabaranerdvana2024lotinfottco\ttco\pieseposibile.h
+1720077117 c:\users\mihai\mihai-cod\tabaranerdvana2024lotinfo\tabaranerdvana2024lotinfottco\ttco\pieseposibile.h
 	<iostream>
 	<stdio.h>
 	<stdlib.h>
@@ -46,7 +46,7 @@
 	<string>
 	<queue>
 
-1720011540 c:\users\mihai\mihai-cod\tabaranerdvana2024lotinfo\tabaranerdvana2024lotinfottco\ttco\placepiece.h
+1720080370 c:\users\mihai\mihai-cod\tabaranerdvana2024lotinfo\tabaranerdvana2024lotinfottco\ttco\placepiece.h
 	<iostream>
 	<stdio.h>
 	<stdlib.h>

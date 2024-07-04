@@ -1,0 +1,66 @@
+B>> clear_board
+B<< =
+W>> clear_board
+W<< =
+B>> cputime
+B<< = 0.17
+W>> cputime
+W<< = 0
+B>> genmove b
+Could not load book /home/mihai/pentobi/pentobi_gtp/book_duo.blksgf
+MaxCnt 90
+Setting default parameters for Blokus Duo
+[0] Maximum count reached
+Val 0.77, ValCnt 91, Vst 90, Sim 90, Chld 81.1%
+Nds 8623, Tm 00:00, Sim/s 931, Len 22.6 dev=4.8 [3...32]
+Dp 3.8 dev=1.3 [1...6]
+Mov 315, Sco 4.0 dev=5.2
+B<< = e8,d9,e9,f9,e10
+W>> play b e8,d9,e9,f9,e10
+W<< =
+W>> genmove w
+W<< = j5
+B>> play w j5
+B<< =
+B>> genmove b
+Could not load book /home/mihai/pentobi/pentobi_gtp/book_duo.blksgf
+MaxCnt 165
+[0] Maximum count reached
+Val 0.88, ValCnt 256, Vst 165, Sim 165, Chld 98.8%
+Nds 15090, Tm 00:00, Sim/s 2580, Len 19.0 dev=3.1 [9...27]
+Dp 3.4 dev=1.2 [1...7]
+Mov 578, Sco 8.4 dev=4.5
+B<< = i6,h7,i7,g8,h8
+W>> play b i6,h7,i7,g8,h8
+W<< =
+W>> genmove w
+W<< = k4,l4
+B>> play w k4,l4
+B<< =
+B>> genmove b
+Could not load book /home/mihai/pentobi/pentobi_gtp/book_duo.blksgf
+MaxCnt 183
+[0] Maximum count reached
+Val 0.95, ValCnt 283, Vst 183, Sim 183, Chld 83.6%
+Nds 20185, Tm 00:00, Sim/s 3976, Len 12.4 dev=3.5 [7...24]
+Dp 3.1 dev=1.1 [1...6]
+Mov 864, Sco 12.2 dev=1.6
+B<< = i3,h4,i4,j4,h5
+W>> play b i3,h4,i4,j4,h5
+W<< =
+W>> genmove w
+W<< = m3,n3,n4
+B>> play w m3,n3,n4
+B<< =
+B>> genmove b
+Could not load book /home/mihai/pentobi/pentobi_gtp/book_duo.blksgf
+MaxCnt 202
+[0] Maximum count reached
+Val 1.03, ValCnt 302, Vst 202, Sim 202, Chld 51.0%
+Nds 19742, Tm 00:00, Sim/s 8730, Len 6.6 dev=3.6 [3...21]
+Dp 2.4 dev=0.7 [1...5]
+Mov 936, Sco 14.2 dev=1.1
+B<< = k5,k6,l6,m6,k7
+W>> play b k5,k6,l6,m6,k7
+W<< =
+W>> genmove w

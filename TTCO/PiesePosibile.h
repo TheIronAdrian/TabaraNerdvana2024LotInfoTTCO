@@ -255,12 +255,12 @@ void InitPiese(){
   }
 
   if(DEBUG > 4){
-    for(x=0;x<NRPIECE;x++){
+    /*for(x=0;x<NRPIECE;x++){
       for(PIECE aux : pc[x]){
         //cout << aux.mat;
         for(int i=0;i<aux.n;i++){
           for(int j=0;j<aux.m;j++){
-            cout << aux.mat[(i*MAXSIZE+j)];
+            cerr << aux.mat[(i*MAXSIZE+j)];
           }
           printf("\n");
         }
@@ -269,7 +269,7 @@ void InitPiese(){
       printf("----NEW ELEMENT---\n");
     }
 
-    printf("\nCONT : %3d\n",cont);
+    printf("\nCONT : %3d\n",cont);*/
   }
 }
 
