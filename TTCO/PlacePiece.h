@@ -13,9 +13,13 @@
 #define FIRSTMOVEY 10
 #define SECONMOVEX 10
 #define SECONMOVEY 5
-#define ADAN 4
+#define ADAN 3
 #define EU 0
 #define OPPON 1
+
+int NumberOfSearched;
+int NumberOfGoInDepth;
+int NumberOfEvaluate;
 
 struct RASPPIESA{
   int x,y,piesa,rot;
@@ -175,15 +179,6 @@ int Eval(int player){
 
 
   for(x=0;x<2;x++){
-    eval=  ((matPiese[x]<<17)|
-            (matPiese[x]<<15)|
-            (matPiese[x]>>17)|
-            (matPiese[x]>>15)|
-            (BORDARE | matPiese[0] | matPiese[1])
-           )^(BORDARE | matPiese[0] | matPiese[1]);
-
-    colt[x]=eval.count();
-
     eval=  ((matPiese[x]<<16)|
             (matPiese[x]<<1)|
             (matPiese[x]>>16)|
@@ -193,16 +188,30 @@ int Eval(int player){
 
     block[x]=eval.count();
 
+    eval=  ((matPiese[x]<<17)|
+            (matPiese[x]<<15)|
+            (matPiese[x]>>17)|
+            (matPiese[x]>>15)|
+            (BORDARE | matPiese[0] | matPiese[1] | eval)
+           )^(BORDARE | matPiese[0] | matPiese[1] | eval);
+
+    colt[x]=eval.count();
+
+
     used[x]=matPiese[x].count();
   }
 
   return colt[player]*4+
-         used[player]*2+
+         used[player]*3+
          block[1-player]*1
 
        -(colt[1-player]*4+
-         used[1-player]*2+
+         used[1-player]*3+
          block[player]*1);
+}
+
+int EvalFinal(int player){
+  return 1000*(matPiese[player].count()-matPiese[1-player].count());
 }
 
 void Undo(RASPPIESA transfer,int player){
@@ -236,12 +245,17 @@ void PrintMat(){
 
 }
 
-int NegaMax(int adan,int player,int alpha,int beta){
+int NegaMax(int adan,int player,int alpha,int beta,int fin){
   int p,poz,i,j,z,rot,last,aux,ma;
   vector <XYZ> pozi;
   bitset <MAXSIZE*MAXSIZE> colt(0);
 
+  if(fin==2){
+    return EvalFinal(player);
+  }
+
   if(adan==ADAN){
+    NumberOfEvaluate++;
     return Eval(player);
   }
 
@@ -273,7 +287,9 @@ int NegaMax(int adan,int player,int alpha,int beta){
         for(XYZ cord : pozi){
           for(i=0;i<pc[z][rot].n && i<cord.x;i++){
             for(j=0;j<pc[z][rot].m && j<cord.y;j++){
+              NumberOfSearched++;
               if(CheckPosition(player,{cord.x-i,cord.y-j,z,rot},pc[z][rot].mat)){
+                NumberOfGoInDepth++;
                 Undo({cord.x-i,cord.y-j,z,rot},player);
                 if(DEBUG>4){
                   cerr << cord.x << " ";
@@ -281,7 +297,7 @@ int NegaMax(int adan,int player,int alpha,int beta){
                   cerr << z << " ";
                   cerr << rot << "\n";
                 }
-                aux=-NegaMax(adan+1,1-player,-beta,-alpha);
+                aux=-NegaMax(adan+1,1-player,-beta,-alpha,fin);
 
                 ma=max(ma,aux);
                 alpha=max(alpha,aux);
@@ -300,7 +316,7 @@ int NegaMax(int adan,int player,int alpha,int beta){
   }
 
   if(ma==-INFI){
-    return INFI;
+    return -NegaMax(adan+1,1-player,-beta,-alpha,fin);
   }
 
   return ma;
@@ -353,6 +369,10 @@ RASPPIESA FindPiece(int player){
   vector <XYZ> pozi;
   bitset <MAXSIZE*MAXSIZE> colt(0);
 
+  //NumberOfSearched=0;
+  //NumberOfGoInDepth=0;
+  //NumberOfEvaluate=0;
+
   colt=CalcColt(player,colt);
   //PrintMat();
   last=0;
@@ -382,7 +402,9 @@ RASPPIESA FindPiece(int player){
         for(XYZ cord : pozi){
           for(i=0;i<pc[z][rot].n && i<cord.x;i++){
             for(j=0;j<pc[z][rot].m && j<cord.y;j++){
+              NumberOfSearched++;
               if(CheckPosition(player,{cord.x-i,cord.y-j,z,rot},pc[z][rot].mat)){
+                NumberOfGoInDepth++;
                 //cerr << "Exista Mutarea " << z << " " << rot << "\n";
                 Undo({cord.x-i,cord.y-j,z,rot},player);
                 if(DEBUG>4){
@@ -392,7 +414,7 @@ RASPPIESA FindPiece(int player){
                   cerr << rot << "\n";
                 }
                 //PrintMat();
-                aux=-NegaMax(1,1-player,-INFI,-ma);
+                aux=-NegaMax(1,1-player,-INFI,-ma,0);
                 if(aux>ma){
                   ma=aux;
                   ans={cord.x-i,cord.y-j,z,rot};
@@ -408,6 +430,8 @@ RASPPIESA FindPiece(int player){
   }
 
   cerr << ma << "\n";
+  cerr << NumberOfSearched << " " << NumberOfGoInDepth << " " << NumberOfEvaluate << "\n";
+
 
   //assert(1==1 && "Test" );
   //assert(ma!=-INFI && "EstiProstNuAiGasitPiesa");

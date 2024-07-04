@@ -7,7 +7,7 @@
 #define MOVE 1
 #define PLAY 2
 #define QUIT 3
-#define INFI 1000000
+#define INFI 1000000000
 #define DEBUG 0
 #define PLAYAREA 14
 #include "Citire.h"
@@ -95,7 +95,8 @@ int main(){
     }
   }
 
-  cerr << "\n\n--------FinishGame--------\n\n";
+  cerr << "--------Rezultat Final >"<< EvalFinal(0)/1000 << "<--------\n";
+  cerr << "--------FinishGame--------\n\n";
 
   return 0;
 }
