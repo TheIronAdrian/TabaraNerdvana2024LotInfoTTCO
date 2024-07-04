@@ -13,7 +13,7 @@
 #define FIRSTMOVEY 10
 #define SECONMOVEX 10
 #define SECONMOVEY 5
-#define ADAN 3
+#define ADAN 4
 #define EU 0
 #define OPPON 1
 
@@ -196,13 +196,13 @@ int Eval(int player){
     used[x]=matPiese[x].count();
   }
 
-  return colt[player]*2+
-         used[player]*4+
-         block[1-player]*0
+  return colt[player]*4+
+         used[player]*2+
+         block[1-player]*1
 
-       -(colt[1-player]*2+
-         used[1-player]*4+
-         block[player]*0);
+       -(colt[1-player]*4+
+         used[1-player]*2+
+         block[player]*1);
 }
 
 void Undo(RASPPIESA transfer,int player){
@@ -392,13 +392,13 @@ RASPPIESA FindPiece(int player){
                   cerr << rot << "\n";
                 }
                 //PrintMat();
-                aux=-NegaMax(1,1-player,-INFI,INFI);
-                //PrintMat();
-                Undo({cord.x-i,cord.y-j,z,rot},player);
+                aux=-NegaMax(1,1-player,-INFI,-ma);
                 if(aux>ma){
                   ma=aux;
                   ans={cord.x-i,cord.y-j,z,rot};
                 }
+                //PrintMat();
+                Undo({cord.x-i,cord.y-j,z,rot},player);
               }
             }
           }
