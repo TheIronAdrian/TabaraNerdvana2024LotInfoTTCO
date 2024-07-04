@@ -48,6 +48,7 @@ int main(){
       break;
 
       case PLAY:
+        FirstPlayer=1;
         Occupy(linie.text);
         cout << "= \n\n";
       break;

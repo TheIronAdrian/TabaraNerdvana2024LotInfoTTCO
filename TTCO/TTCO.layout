@@ -2,57 +2,14 @@
 <CodeBlocks_layout_file>
 	<FileVersion major="1" minor="0" />
 	<ActiveTarget name="Debug" />
-	<File name="Citire.h" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="13" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="567" topLine="16" />
-		</Cursor>
-		<Folding>
-			<Collapse line="8" />
-		</Folding>
-	</File>
 	<File name="main.cpp" open="1" top="1" tabpos="1" split="0" active="1" splitpos="0" zoom_1="14" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="2048" topLine="85" />
+			<Cursor1 position="395" topLine="10" />
 		</Cursor>
-	</File>
-	<File name="Time.h" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="13" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="214" topLine="0" />
-		</Cursor>
-		<Folding>
-			<Collapse line="10" />
-			<Collapse line="14" />
-			<Collapse line="18" />
-		</Folding>
-	</File>
-	<File name="Matrice.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="13" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="300" topLine="6" />
-		</Cursor>
-		<Folding>
-			<Collapse line="20" />
-			<Collapse line="39" />
-		</Folding>
-	</File>
-	<File name="PlacePiece.h" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="11" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="4432" topLine="105" />
-		</Cursor>
-		<Folding>
-			<Collapse line="23" />
-			<Collapse line="27" />
-			<Collapse line="31" />
-			<Collapse line="78" />
-			<Collapse line="95" />
-			<Collapse line="142" />
-			<Collapse line="175" />
-			<Collapse line="212" />
-			<Collapse line="324" />
-		</Folding>
 	</File>
 	<File name="PiesePosibile.h" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="14" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1328" topLine="115" />
+			<Cursor1 position="3400" topLine="0" />
 		</Cursor>
 		<Folding>
 			<Collapse line="132" />
@@ -61,7 +18,44 @@
 			<Collapse line="189" />
 			<Collapse line="206" />
 			<Collapse line="230" />
-			<Collapse line="244" />
+		</Folding>
+	</File>
+	<File name="Matrice.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="13" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="261" topLine="6" />
+		</Cursor>
+		<Folding>
+			<Collapse line="20" />
+			<Collapse line="39" />
+		</Folding>
+	</File>
+	<File name="PlacePiece.h" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="11" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="334" topLine="0" />
+		</Cursor>
+		<Folding>
+			<Collapse line="73" />
+			<Collapse line="120" />
+			<Collapse line="137" />
+			<Collapse line="379" />
+		</Folding>
+	</File>
+	<File name="Time.h" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="13" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="136" topLine="0" />
+		</Cursor>
+		<Folding>
+			<Collapse line="10" />
+			<Collapse line="14" />
+			<Collapse line="18" />
+		</Folding>
+	</File>
+	<File name="Citire.h" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="13" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="567" topLine="16" />
+		</Cursor>
+		<Folding>
+			<Collapse line="8" />
 		</Folding>
 	</File>
 </CodeBlocks_layout_file>
