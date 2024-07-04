@@ -13,13 +13,55 @@
 #define FIRSTMOVEY 10
 #define SECONMOVEX 10
 #define SECONMOVEY 5
-#define ADAN 3
+#define ADAN 4
 #define EU 0
 #define OPPON 1
 
 int NumberOfSearched;
 int NumberOfGoInDepth;
 int NumberOfEvaluate;
+int PlusEvalUsed[2];
+int ColtulMeu;
+
+int MatricePuncte[2][MAXSIZE][MAXSIZE]={
+  {
+    { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+    { 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0},
+    { 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0},
+    { 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0},
+    { 0, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 0},
+    { 0, 3, 3, 3, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 0},
+    { 0, 3, 3, 3, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 0},
+    { 0, 3, 3, 3, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 0},
+    { 0, 3, 3, 3, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 0},
+    { 0, 3, 3, 3, 3, 3, 3, 2, 2, 2, 2, 2, 1, 1, 1, 0},
+    { 0, 3, 3, 3, 3, 3, 3, 2, 2, 2, 2, 2, 1, 1, 1, 0},
+    { 0, 3, 3, 3, 3, 3, 3, 2, 2, 2, 2, 2, 1, 1, 1, 0},
+    { 0, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 1, 1, 1, 1, 0},
+    { 0, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 1, 1, 1, 1, 0},
+    { 0, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 1, 1, 1, 1, 0},
+    { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+
+  },
+  {
+    { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+    { 0, 1, 1, 1, 1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 0},
+    { 0, 1, 1, 1, 1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 0},
+    { 0, 1, 1, 1, 1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 0},
+    { 0, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 0},
+    { 0, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 0},
+    { 0, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 0},
+    { 0, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 0},
+    { 0, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 0},
+    { 0, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 0},
+    { 0, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 0},
+    { 0, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 0},
+    { 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0},
+    { 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0},
+    { 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0},
+    { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+  }
+};
 
 struct RASPPIESA{
   int x,y,piesa,rot;
@@ -147,8 +189,10 @@ bitset <MAXSIZE*MAXSIZE> CalcColt(int player,bitset <MAXSIZE*MAXSIZE> colt){
   //cout << colt << "\n";
   if(matPiese[player]==0){
     if(matPiese[1-player]==0){
+      ColtulMeu=0;
       colt[FIRSTMOVEX*MAXSIZE+FIRSTMOVEY]=1;
     }else{
+      ColtulMeu=1;
       colt[SECONMOVEX*MAXSIZE+SECONMOVEY]=1;
     }
   }else{
@@ -202,11 +246,11 @@ int Eval(int player){
   }
 
   return colt[player]*4+
-         used[player]*3+
+         PlusEvalUsed[(ColtulMeu+player)%2]*3+
          block[1-player]*1
 
        -(colt[1-player]*4+
-         used[1-player]*3+
+         PlusEvalUsed[1-(ColtulMeu+player)%2]*3+
          block[player]*1);
 }
 
@@ -214,13 +258,24 @@ int EvalFinal(int player){
   return 1000*(matPiese[player].count()-matPiese[1-player].count());
 }
 
-void Undo(RASPPIESA transfer,int player){
-  int x,y,piesa,rot;
+void Undo(RASPPIESA transfer,int player,int type){
+  int x,y,piesa,rot,i,j,n,m;
 
   x=transfer.x;
   y=transfer.y;
   piesa=transfer.piesa;
   rot=transfer.rot;
+
+  n=pc[piesa][rot].n;
+  m=pc[piesa][rot].m;
+
+  for(i=0;i<n;i++){
+    for(j=0;j<m;j++){
+      if(pc[piesa][rot].mat[i*MAXSIZE+j]==1){
+        PlusEvalUsed[(ColtulMeu+player)%2]+=type*MatricePuncte[(ColtulMeu+player)%2][i+x][j+y];
+      }
+    }
+  }
 
   playerPc[piesa][player]=1-playerPc[piesa][player];
 
@@ -288,9 +343,9 @@ int NegaMax(int adan,int player,int alpha,int beta,int fin){
           for(i=0;i<pc[z][rot].n && i<cord.x;i++){
             for(j=0;j<pc[z][rot].m && j<cord.y;j++){
               NumberOfSearched++;
-              if(CheckPosition(player,{cord.x-i,cord.y-j,z,rot},pc[z][rot].mat)){
+              if(CheckPosition(player,{cord.x-i,cord.y-j,z,rot},pc[z][rot].mat)){ ///MUST CASE WHEN LEAVING THE RIGHT BORDER
                 NumberOfGoInDepth++;
-                Undo({cord.x-i,cord.y-j,z,rot},player);
+                Undo({cord.x-i,cord.y-j,z,rot},player,1);
                 if(DEBUG>4){
                   cerr << cord.x << " ";
                   cerr << cord.y << " ";
@@ -302,7 +357,7 @@ int NegaMax(int adan,int player,int alpha,int beta,int fin){
                 ma=max(ma,aux);
                 alpha=max(alpha,aux);
 
-                Undo({cord.x-i,cord.y-j,z,rot},player);
+                Undo({cord.x-i,cord.y-j,z,rot},player,-1);
 
                 if(alpha>=beta){
                   return ma;
@@ -406,7 +461,7 @@ RASPPIESA FindPiece(int player){
               if(CheckPosition(player,{cord.x-i,cord.y-j,z,rot},pc[z][rot].mat)){
                 NumberOfGoInDepth++;
                 //cerr << "Exista Mutarea " << z << " " << rot << "\n";
-                Undo({cord.x-i,cord.y-j,z,rot},player);
+                Undo({cord.x-i,cord.y-j,z,rot},player,1);
                 if(DEBUG>4){
                   cerr << cord.x << " ";
                   cerr << cord.y << " ";
@@ -420,7 +475,7 @@ RASPPIESA FindPiece(int player){
                   ans={cord.x-i,cord.y-j,z,rot};
                 }
                 //PrintMat();
-                Undo({cord.x-i,cord.y-j,z,rot},player);
+                Undo({cord.x-i,cord.y-j,z,rot},player,-1);
               }
             }
           }

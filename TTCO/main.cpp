@@ -57,7 +57,7 @@ int main(){
     //cerr << linie.val;
   }
 
-  cout << "\n= \n\n";
+  cout << "= \n\n";
 
   if(DEBUG>1){
     for(int i=0;i<MAXSIZE;i++){

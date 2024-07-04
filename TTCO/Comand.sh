@@ -5,14 +5,14 @@ echo ~
 echo ======
 PATH_TO_TWOGTP="/home/mihai/pentobi/twogtp/twogtp"
 PATH_TO_PENTOBI="/home/mihai/TabaraNerdvana2024LOTINFO/TabaraNerdvana2024LotInfoTTCO/TTCO/loser"
-PATH_TO_US="/home/mihai/pentobi/pentobi_gtp/pentobi-gtp"
+PATH_TO_TTCO="/home/mihai/pentobi/pentobi_gtp/pentobi-gtp"
 ls -la $PATH_TO_TWOGTP
 
 rm -rf output.dat output.blksgf
 
 # Two player
 $PATH_TO_TWOGTP \
-  --black $PATH_TO_US \
+  --black $PATH_TO_TTCO \
   --white $PATH_TO_PENTOBI \
   -g duo
 
