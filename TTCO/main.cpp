@@ -34,8 +34,8 @@ int main(){
       break ;
       case TIME:
         if(start!=-1){
-          cerr << "\n--------FinishGame--------\n";
-          cerr << "\n\nFinal Score: " << matPiese[0].count()<< "  " <<matPiese[1].count()<< "  dif  " << EvalFinal(0)/1000 <<" \n";
+          //cerr << "\n--------FinishGame--------\n";
+          cerr << "\n\nFinal Score TTCO: " << matPiese[0].count()<< "  " <<matPiese[1].count()<< "  dif  " << EvalFinal(0)/1000 <<" \n";
           cout << "= " << TimeLeft() << "\n\n";
         }else{
           TimeStart();

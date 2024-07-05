@@ -17,10 +17,17 @@
 #define EU 0
 #define OPPON 1
 
+struct RASPPIESA{
+  int x,y,piesa,rot;
+};
+
+clock_t startFirstMove;
+
 int NumberOfSearched;
 int NumberOfGoInDepth;
 int NumberOfEvaluate;
 int PlusEvalUsed[2];
+RASPPIESA KillerMove[7];
 int ColtulMeu;
 int FirstPlayer;
 
@@ -63,10 +70,6 @@ int MatricePuncte[2][MAXSIZE][MAXSIZE]={
 
   }
 
-};
-
-struct RASPPIESA{
-  int x,y,piesa,rot;
 };
 
 struct XYZ{
@@ -245,11 +248,12 @@ int Eval(int player){
     used[x]=matPiese[x].count();
   }
 
+  if(ColtulMeu==0){
   return colt[player]*4+
          //*
          PlusEvalUsed[(ColtulMeu+player)%2]
          //*/
-         //colt[player]
+         //used[player]
          *3+
          block[1-player]*1
 
@@ -257,9 +261,22 @@ int Eval(int player){
          //*
          PlusEvalUsed[(ColtulMeu+1-player)%2]
          //*/
-         //colt[1-player]
+         //used[1-player]
          *3+
          block[player]*1);
+  }else{
+  return colt[player]*4+
+         used[player]
+         *3+
+         block[1-player]*1
+
+       -(colt[1-player]*4+
+         used[1-player]
+         *3+
+         block[player]*1);
+
+  }
+
 }
 
 int EvalFinal(int player){
@@ -341,6 +358,25 @@ int NegaMax(int adan,int player,int alpha,int beta,int fin){
 
   ma=-INFI;
 
+  /*
+  if(KillerMove[adan].x!=-1){
+    if(CheckPosition(player,KillerMove[adan],pc[z][rot].mat)){ ///MUST CASE WHEN LEAVING THE RIGHT BORDER
+      NumberOfGoInDepth++;
+      Undo(KillerMove[adan],player,1);
+      aux=-NegaMax(adan+1,1-player,-beta,-alpha,fin);
+
+      ma=max(ma,aux);
+      alpha=max(alpha,aux);
+
+      Undo(KillerMove[adan],player,-1);
+
+      if(alpha>=beta){
+        return ma;
+      }
+    }
+  }
+  //*/
+
   for(z=0;z<NRPIECE;z++){
     if(DEBUG>4){
       cerr << "Piesa " << z << ": " << playerPc[z][player] << "\n";
@@ -353,6 +389,9 @@ int NegaMax(int adan,int player,int alpha,int beta,int fin){
               NumberOfSearched++;
               if(CheckPosition(player,{cord.x-i,cord.y-j,z,rot},pc[z][rot].mat)){ ///MUST CASE WHEN LEAVING THE RIGHT BORDER
                 NumberOfGoInDepth++;
+                /*if(double(clock()-startFirstMove)/double(CLOCKS_PER_SEC)>30){
+                  return ma;
+                }*/
                 Undo({cord.x-i,cord.y-j,z,rot},player,1);
                 if(DEBUG>4){
                   cerr << cord.x << " ";
@@ -368,8 +407,12 @@ int NegaMax(int adan,int player,int alpha,int beta,int fin){
                 Undo({cord.x-i,cord.y-j,z,rot},player,-1);
 
                 if(alpha>=beta){
+                  KillerMove[adan]={cord.x-i,cord.y-j,z,rot};
                   return ma;
                 }
+                /*if(double(clock()-startFirstMove)/double(CLOCKS_PER_SEC)>30){
+                  return ma;
+                }*/
               }
             }
           }
@@ -432,6 +475,12 @@ RASPPIESA FindPiece(int player){
   vector <XYZ> pozi;
   bitset <MAXSIZE*MAXSIZE> colt(0);
 
+
+  startFirstMove=clock();
+  for(i=0;i<ADAN;i++){
+    KillerMove[i]={-1,-1,-1,-1};
+  }
+
   if(FirstPlayer==1){
     ColtulMeu=1;
   }else{
@@ -462,34 +511,66 @@ RASPPIESA FindPiece(int player){
   PrintTesting(colt,pozi);
   ma=-INFI-1;
 
-  for(z=0;z<NRPIECE;z++){
-    //if(DEBUG>4){
-      //cerr << "Piesa " << z << ": " << playerPc[z][player] << "\n";
-    //}
-    if(playerPc[z][player]==1){
-      for(rot=0;rot<pc[z].size();rot++){
-        for(XYZ cord : pozi){
-          for(i=0;i<pc[z][rot].n && i<cord.x;i++){
-            for(j=0;j<pc[z][rot].m && j<cord.y;j++){
-              NumberOfSearched++;
-              if(CheckPosition(player,{cord.x-i,cord.y-j,z,rot},pc[z][rot].mat)){
-                NumberOfGoInDepth++;
-                //cerr << "Exista Mutarea " << z << " " << rot << "\n";
-                Undo({cord.x-i,cord.y-j,z,rot},player,1);
-                if(DEBUG>4){
-                  cerr << cord.x << " ";
-                  cerr << cord.y << " ";
-                  cerr << z << " ";
-                  cerr << rot << "\n";
+  if(matPiese[player].count()==0){
+    z=0;
+    for(rot=0;rot<pc[z].size();rot++){
+      for(XYZ cord : pozi){
+        for(i=0;i<pc[z][rot].n && i<cord.x;i++){
+          for(j=0;j<pc[z][rot].m && j<cord.y;j++){
+            NumberOfSearched++;
+            if(CheckPosition(player,{cord.x-i,cord.y-j,z,rot},pc[z][rot].mat)){
+              NumberOfGoInDepth++;
+              //cerr << "Exista Mutarea " << z << " " << rot << "\n";
+              Undo({cord.x-i,cord.y-j,z,rot},player,1);
+              if(DEBUG>4){
+                cerr << cord.x << " ";
+                cerr << cord.y << " ";
+                cerr << z << " ";
+                cerr << rot << "\n";
+              }
+              //PrintMat();
+              aux=-NegaMax(1,1-player,-INFI,-ma,0);
+              if(aux>ma){
+                ma=aux;
+                ans={cord.x-i,cord.y-j,z,rot};
+              }
+              //PrintMat();
+              Undo({cord.x-i,cord.y-j,z,rot},player,-1);
+            }
+          }
+        }
+      }
+    }
+  }else{
+    for(z=0;z<NRPIECE;z++){
+      //if(DEBUG>4){
+        //cerr << "Piesa " << z << ": " << playerPc[z][player] << "\n";
+      //}
+      if(playerPc[z][player]==1){
+        for(rot=0;rot<pc[z].size();rot++){
+          for(XYZ cord : pozi){
+            for(i=0;i<pc[z][rot].n && i<cord.x;i++){
+              for(j=0;j<pc[z][rot].m && j<cord.y;j++){
+                NumberOfSearched++;
+                if(CheckPosition(player,{cord.x-i,cord.y-j,z,rot},pc[z][rot].mat)){
+                  NumberOfGoInDepth++;
+                  //cerr << "Exista Mutarea " << z << " " << rot << "\n";
+                  Undo({cord.x-i,cord.y-j,z,rot},player,1);
+                  if(DEBUG>4){
+                    cerr << cord.x << " ";
+                    cerr << cord.y << " ";
+                    cerr << z << " ";
+                    cerr << rot << "\n";
+                  }
+                  //PrintMat();
+                  aux=-NegaMax(1,1-player,-INFI,-ma,0);
+                  if(aux>ma){
+                    ma=aux;
+                    ans={cord.x-i,cord.y-j,z,rot};
+                  }
+                  //PrintMat();
+                  Undo({cord.x-i,cord.y-j,z,rot},player,-1);
                 }
-                //PrintMat();
-                aux=-NegaMax(1,1-player,-INFI,-ma,0);
-                if(aux>ma){
-                  ma=aux;
-                  ans={cord.x-i,cord.y-j,z,rot};
-                }
-                //PrintMat();
-                Undo({cord.x-i,cord.y-j,z,rot},player,-1);
               }
             }
           }
